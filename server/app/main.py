@@ -5,7 +5,12 @@ import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from utils.helpers import get_interpolated_forecast, hourly_forecast_map, metrics_info
+
+from app.utils.helpers import (
+    get_interpolated_forecast,
+    hourly_forecast_map,
+    metrics_info,
+)
 
 app = FastAPI()
 
@@ -20,6 +25,8 @@ ELEXON_URL = "https://data.elexon.co.uk/bmrs/api/v1/datasets"
 
 
 class DeliveryWindow(BaseModel):
+    delivery_date: str
+    decision_date: str
     publish_from: str
     publish_to: str
     bid_deadline: str
@@ -29,6 +36,7 @@ class Metrics(BaseModel):
     rmse: float
     mse: float
     bias: float
+    max_shortfall: float
 
 
 class Series(BaseModel):
@@ -96,6 +104,8 @@ def main(date_str: str):
 
     return {
         "delivery_window": {
+            "delivery_date": delivery_date.isoformat(),
+            "decision_date": decision_date.isoformat(),
             "publish_from": fuelhh_pub_from,
             "publish_to": fuelhh_pub_to,
             "bid_deadline": bid_deadline,

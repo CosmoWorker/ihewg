@@ -39,9 +39,12 @@ def metrics_info(series: list[dict]) -> dict[str, float]:
     mse = sum(item["error_mw"] ** 2 for item in series) / n
     rmse = math.sqrt(mse)
     bias = sum(item["error_mw"] for item in series) / n
-
+    max_shortfall = max(
+        (max(0, item["forecast_mw"] - item["actual_mw"]) for item in series), default=0
+    )
     return {
         "rmse": round(rmse, 2),
         "mse": round(mse, 2),
         "bias": round(bias, 2),
+        "max_shortfall": round(max_shortfall, 2),
     }
