@@ -8,7 +8,7 @@ import GenerationChart from './components/GenerationChart';
 import ErrorBarChart from './components/ErrorBarChart';
 import SettlementTable from './components/SettlementTable';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export default function App() {
   const [selectedDate, setSelectedDate] = useState('2026-01-15');

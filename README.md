@@ -55,6 +55,31 @@ flowchart LR
     API --> Engine
     Engine -->|30m Offset Window| FUELHH
     Engine -->|<= 11:00 UTC Gate Closure| WINDFOR
+
+    %% Node styles
+    classDef frontend fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0c4a6e
+    classDef backend fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    classDef cache fill:#fef9c3,stroke:#ca8a04,stroke-width:2px,color:#713f12
+    classDef engine fill:#ede9fe,stroke:#7c3aed,stroke-width:2px,color:#4c1d95
+    classDef external fill:#ffedd5,stroke:#ea580c,stroke-width:2px,color:#7c2d12
+
+    class UI frontend
+    class API backend
+    class Cache cache
+    class Engine engine
+    class FUELHH,WINDFOR external
+
+    %% Subgraph styles
+    style Client fill:#f0f9ff,stroke:#0284c7,stroke-width:2px,stroke-dasharray:5 5,color:#0c4a6e
+    style Server fill:#f0fdf4,stroke:#16a34a,stroke-width:2px,stroke-dasharray:5 5,color:#14532d
+    style External fill:#fff7ed,stroke:#ea580c,stroke-width:2px,stroke-dasharray:5 5,color:#7c2d12
+
+    %% Edge styles (by order of definition)
+    linkStyle 0 stroke:#0284c7,stroke-width:2px
+    linkStyle 1 stroke:#ca8a04,stroke-width:2px
+    linkStyle 2 stroke:#7c3aed,stroke-width:2px
+    linkStyle 3 stroke:#ea580c,stroke-width:2px
+    linkStyle 4 stroke:#ea580c,stroke-width:2px
 ```
 
 ## Key Project Files

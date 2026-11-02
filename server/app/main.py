@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from functools import lru_cache
 
 import requests
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -22,6 +22,7 @@ app.add_middleware(
     CORSMiddleware, allow_origins=origins, allow_methods=["*"], allow_headers=["*"]
 )
 
+router = APIRouter(prefix="/api")
 
 ELEXON_URL = "https://data.elexon.co.uk/bmrs/api/v1/datasets"
 
@@ -54,7 +55,7 @@ class EnergyResponse(BaseModel):
     series: list[Series]
 
 
-@app.get("/", response_model=EnergyResponse)
+@router.get("/", response_model=EnergyResponse)
 @lru_cache(maxsize=15)
 def main(date_str: str):
     delivery_date = date.fromisoformat(date_str)
@@ -117,6 +118,10 @@ def main(date_str: str):
     }
 
 
-@app.get("/health")
+@router.get("/health")
 def health():
     return {"status": "ok"}
+
+
+app.include_router(router)
+
