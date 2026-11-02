@@ -1,3 +1,4 @@
+import os
 from datetime import date, timedelta
 from functools import lru_cache
 
@@ -14,8 +15,9 @@ from app.utils.helpers import (
 
 app = FastAPI()
 
+_raw_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173")
+origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
 
-origins = ["http://localhost:5173"]
 app.add_middleware(
     CORSMiddleware, allow_origins=origins, allow_methods=["*"], allow_headers=["*"]
 )

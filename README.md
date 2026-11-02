@@ -11,6 +11,18 @@ A energy forecast platform for visualizing data for renewable energy forecasts.
 ### Prerequisites
 * Docker 
 * Node.js (v24+) and pnpm
+### Environment Variables
+Copy the example files before running locally:
+```bash
+cp client/.env.example client/.env
+cp server/.env.example server/.env
+```
+
+| File | Variable | Default | Description |
+|------|----------|---------|-------------|
+| `client/.env` | `VITE_API_URL` | `http://localhost:8000` | Backend URL (baked into Vite bundle at build time) |
+| `server/.env` | `ALLOWED_ORIGINS` | `http://localhost:5173` | Comma-separated CORS origins allowed to call the API |
+
 
 Start all the services using docker compose by running the following command at root:
 ```bash
@@ -65,4 +77,5 @@ flowchart LR
 └── README.md
 ```
 For frontend Information:  [README.md](client/README.md)
+
 
