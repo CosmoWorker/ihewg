@@ -34,9 +34,9 @@ class DeliveryWindow(BaseModel):
 
 class Metrics(BaseModel):
     rmse: float
-    mse: float
     bias: float
     max_shortfall: float
+    p95_shortfall: float
 
 
 class Series(BaseModel):
