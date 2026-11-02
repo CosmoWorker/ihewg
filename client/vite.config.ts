@@ -4,8 +4,13 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server:{
+  server: {
     host: '0.0.0.0',
-    port: 5173
-  }
+    port: 5173,
+    proxy: {
+      // Local dev: proxies to localhost:8000
+      // Docker:    VITE_PROXY_TARGET=http://server:8000 (set in compose.yaml)
+      '/api': process.env.VITE_PROXY_TARGET || 'http://localhost:8000',
+    },
+  },
 })
