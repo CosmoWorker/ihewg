@@ -18,10 +18,10 @@ cp client/.env.example client/.env
 cp server/.env.example server/.env
 ```
 
-| File | Variable | Default | Description |
-|------|----------|---------|-------------|
-| `client/.env` | `VITE_API_URL` | `http://localhost:8000` | Backend URL (baked into Vite bundle at build time) |
-| `server/.env` | `ALLOWED_ORIGINS` | `http://localhost:5173` | Comma-separated CORS origins allowed to call the API |
+| File | Variable | Default |
+|------|----------|---------|
+| `client/.env` | `VITE_API_URL` | `http://localhost:8000`|
+| `server/.env` | `ALLOWED_ORIGINS` | `http://localhost:5173`|
 
 
 Start all the services using docker compose by running the following command at root:
@@ -103,4 +103,6 @@ flowchart LR
 ```
 For frontend Information:  [README.md](client/README.md)
 
+## Live Deployment
+It can be accessed on [https://ihewg.vercel.app/](https://ihewg.vercel.app/)
 
