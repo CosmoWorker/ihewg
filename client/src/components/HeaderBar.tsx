@@ -1,5 +1,5 @@
 import { Card, DatePicker, Tag, Typography, Flex } from 'antd';
-import { ThunderboltOutlined } from '@ant-design/icons';
+import { ThunderboltFilled } from '@ant-design/icons';
 import dayjs from 'dayjs';
 import type { DeliveryWindow } from '../types/energy';
 
@@ -21,7 +21,7 @@ export default function HeaderBar({ selectedDate, onDateChange, deliveryWindow }
         {/* Title */}
         <Flex vertical gap={2}>
           <Flex align="center" gap={10}>
-            <ThunderboltOutlined style={{ fontSize: 26, color: '#60a5fa' }} />
+            <ThunderboltFilled style={{ fontSize: 26, color: '#60a5fa' }} />
             <Title level={4} style={{ margin: 0, color: '#f0f9ff', letterSpacing: '-0.3px' }}>
               UK Day-Ahead Wind Power Generation Visualizer
             </Title>
