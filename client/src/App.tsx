@@ -69,7 +69,7 @@ export default function App() {
           />
         )}
 
-        <Spin spinning={loading} tip="Loading settlement data…" size="large">
+        <Spin spinning={loading} description="Loading settlement data…" size="large">
           {data && (
             <>
               <KpiScorecards metrics={data.metrics} />

@@ -8,9 +8,9 @@ export interface DeliveryWindow {
 
 export interface Metrics {
   rmse: number;
-  mse: number;
   bias: number;
   max_shortfall: number;
+  p95_shortfall: number;
 }
 
 export interface SeriesPoint {

@@ -6,6 +6,7 @@ interface KpiScorecardsProps {
 }
 
 export default function KpiScorecards({ metrics }: KpiScorecardsProps) {
+  if (!metrics) return null;
   const biasTag =
     metrics.bias > 0 ? (
       <Tag color="error">Over-forecasted (Shortfall Risk)</Tag>
@@ -62,17 +63,17 @@ export default function KpiScorecards({ metrics }: KpiScorecardsProps) {
         </Card>
       </Col>
 
-      {/* MSE */}
+      {/* P95 Shortfall */}
       <Col xs={24} sm={12} lg={6}>
         <Card bordered style={{ borderRadius: 10, height: '100%' }}>
           <Statistic
-            title="MSE (Mean Squared Error)"
-            value={metrics.mse.toLocaleString(undefined, { maximumFractionDigits: 2 })}
-            suffix="MW²"
-            valueStyle={{ color: '#2b2830ff' }}
+            title="P95 Shortfall / Absolute Error"
+            value={metrics.p95_shortfall.toFixed(2)}
+            suffix="MW"
+            valueStyle={{ color: metrics.p95_shortfall > 0 ? '#5e3b99ff' : '#374151' }}
           />
           <div style={{ marginTop: 8, fontSize: 12, color: '#6b7280' }}>
-            Average squared error across 48 settlement periods
+            95th-percentile half-hourly shortfall — worst realistic case
           </div>
         </Card>
       </Col>
